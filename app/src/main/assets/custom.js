@@ -1,26 +1,14 @@
-//console.log(
-//    '%cbuild from PakePlus： https://github.com/Sjj1024/PakePlus',
-//    'color:orangered;font-weight:bolder'
-//)
-//
-//// very important, if you don't know what it is, don't touch it
-//// 非常重要，不懂代码不要动
-//const hookClick = (e) => {
-//    const origin = e.target.closest('a')
-//    const isBaseTargetBlank = document.querySelector(
-//        'head base[target="_blank"]'
-//    )
-//    console.log('origin', origin, isBaseTargetBlank)
-//    if (
-//        (origin && origin.href && origin.target === '_blank') ||
-//        (origin && origin.href && isBaseTargetBlank)
-//    ) {
-//        e.preventDefault()
-//        console.log('handle origin', origin)
-//        location.href = origin.href
-//    } else {
-//        console.log('not handle origin', origin)
-//    }
-//}
-//
-//document.addEventListener('click', hookClick, { capture: true })
+window.addEventListener("DOMContentLoaded",()=>{const t=document.createElement("script");t.src="https://www.googletagmanager.com/gtag/js?id=G-W5GKHM0893",t.async=!0,document.head.appendChild(t);const n=document.createElement("script");n.textContent="window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-W5GKHM0893');",document.body.appendChild(n)});// 封装缩放函数，方便重复调用
+function setBodyZoom() {
+  // 避免除以 0 错误（极端情况容错）
+  const zoomRatio = window.innerWidth / 2048 || 1;
+  document.body.style.zoom = zoomRatio;
+  // 可选：打印当前缩放比例（调试用）
+  console.log('当前缩放比例：', zoomRatio.toFixed(2));
+}
+
+// 1. 页面加载完成后初始化缩放
+window.addEventListener('load', setBodyZoom);
+
+// 2. 窗口大小改变时重新计算缩放
+window.addEventListener('resize', setBodyZoom);
